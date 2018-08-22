@@ -1,24 +1,9 @@
 function VisualizeBED(input)
-    % INPUT Name of Case Study or structure `results` from results.mat file
+    % INPUT Name of case study or structure `results` from results.mat file
     % This file contains mostly GUI code. 
     % To change plots, look at BED_plots.m
-    main_directory=fileparts(mfilename('fullpath'));
-    cd(main_directory)
-    addpath(genpath('.'))
-    if ischar(input)
-        input_file = ['CaseStudies/',input,'/results.mat'];    
-        fprintf('Loading results from %s ...',input_file);
-        tmp = load(input_file);
-        results = tmp.results;
-        fprintf(' done\n');
-    else
-        if length(fieldnames(input)) == 1
-            results = input.results;
-        else
-            results = input;
-        end
-    end
-
+    add_BED_path()
+    results = load_results(input);
     try
         close all
     catch

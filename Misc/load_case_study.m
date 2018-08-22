@@ -3,7 +3,7 @@ function [fault,settings,output_file,results,final_states] = load_case_study(cas
     [fault,settings] = add_defaults(case_study);
     output_file = [output_directory,'/results.mat'];
     if exist(output_file,'file') == 2
-        fprintf('Loading previous Markov chains from %s ... ',output_file);
+        fprintf('Loading previous Markov chains from %s ...',output_file);
         tmp = load(output_file);
         results = tmp.results;
         final_states = tmp.final_states;
@@ -24,7 +24,7 @@ function [fault,settings,output_file,results,final_states] = load_case_study(cas
     end
     offline_file = [output_directory,'/offline_data.mat'];
     if exist(offline_file,'file') == 2
-        fprintf('Loading offline data from %s ... ',offline_file);
+        fprintf('Loading offline data from %s ...',offline_file);
         tmp = load(offline_file);
         fault.offline_data = tmp.offline_data;
         fprintf(' done\n');

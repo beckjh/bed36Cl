@@ -50,7 +50,7 @@ function slip_history_plot(states,repeats,fault,settings,plot_time,i_max,confide
     if isfield(fault.truth,'times') && isstruct(fault.truth)
         state = strip_pre_erosion(fault.truth);
         cum_slip = [0;cumsum(state.jumps)];
-        slip_history_truth = state.d_init+cum_slip(sum(bsxfun(@ge,times,state.times'),2)+1);
+        slip_history_truth = cum_slip(sum(bsxfun(@ge,times,state.times'),2)+1);
         h = plot(times/1000.0,slip_history_truth,'b-');
         h.LineWidth = 2;
         leg{end+1} = 'Truth';

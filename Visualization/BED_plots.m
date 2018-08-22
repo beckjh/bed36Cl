@@ -14,7 +14,7 @@ function BED_plots(results,p_burn_in,plot_time,confidence,range,resolution_facto
     if sum(repeats)>0
         wRMSs = wRMS(cell2mat(cellfun(@(state) state.simulation',states,'uniformoutput',false)),results.fault.samples);
         [wRMS_min,i_max] = min(wRMSs);
-        if results.settings.debug;fprintf('Mininmal rmsw: %f\n',wRMS_min);end;
+        if results.settings.debug;fprintf('Mininmal rmsw: %f\n',wRMS_min);end
         fprintf('Minimal wRMS error: %f\n',wRMS_min);
         LeastSquaresFit = states{i_max} %#ok<NOPRT,NASGU>
         next_figure('Slip intensity')

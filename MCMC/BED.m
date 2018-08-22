@@ -1,6 +1,7 @@
 function [results,final_states]=BED(fault,settings,runtime,initial_states)
+    % Don't run this by hand. use RunBED.m
     time_start = tic;
-    model = @(x) settings.modelscarp(fault,settings,x);
+    model = @(state) settings.modelscarp(fault,settings,state);
     likelihood = @(state,sigma,sigma_factor) likelihood_full(model,state,sigma,sigma_factor,fault);
     likelihood_from_simulation = @(state,sigma,sigma_factor) likelihood_from_simulation_full(state,sigma,sigma_factor,fault);
     N_chains = settings.N_chains;
