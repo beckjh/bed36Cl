@@ -42,7 +42,8 @@ function [fault,settings]=add_defaults(case_study)
         ps = parallel.Settings;
         ps.Pool.AutoCreate = ~settings.debug;
     catch e
-        err(e)
+        msg = 'Error occurred in add_defaults, parallelization not activated (Possible cause: missing the required add-on Parallel Computing Toolbox)';
+        warning(msg)
     end
     settings.T_min = min(prior.T_init_min,settings.T_min);
     settings.N_chains = settings.group_size*length(settings.pt_levels);
